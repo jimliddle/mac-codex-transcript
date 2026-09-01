@@ -5,6 +5,12 @@ import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 
+struct SessionProjectGroup: Identifiable {
+    let id: String
+    let name: String
+    let sessions: [SessionSummary]
+}
+
 @MainActor
 final class AppModel: ObservableObject {
     @Published var codexHome: URL
@@ -36,6 +42,20 @@ final class AppModel: ObservableObject {
             $0.title.lowercased().contains(query) ||
             ($0.cwd?.lowercased().contains(query) ?? false) ||
             $0.id.lowercased().contains(query)
+        }
+    }
+
+    var filteredSessionGroups: [SessionProjectGroup] {
+        Dictionary(grouping: filteredSessions) { session in
+            session.cwd ?? "title:\(session.projectName)"
+        }
+        .map { key, sessions in
+            SessionProjectGroup(id: key, name: sessions[0].projectName, sessions: sessions)
+        }
+        .sorted { lhs, rhs in
+            let left = lhs.sessions.first?.timestamp ?? .distantPast
+            let right = rhs.sessions.first?.timestamp ?? .distantPast
+            return left > right
         }
     }
 

@@ -12,9 +12,20 @@ struct ContentView: View {
                 sidebarHeader
                 Divider()
                 List(selection: $model.selected) {
-                    ForEach(model.filteredSessions) { session in
-                        SessionRow(session: session)
-                            .tag(session)
+                    ForEach(model.filteredSessionGroups) { project in
+                        Section {
+                            ForEach(project.sessions) { session in
+                                SessionRow(session: session)
+                                    .tag(session)
+                            }
+                        } header: {
+                            HStack {
+                                Label(project.name, systemImage: "folder.fill")
+                                Spacer()
+                                Text("\(project.sessions.count)")
+                                    .foregroundStyle(.tertiary)
+                            }
+                        }
                     }
                 }
                 .listStyle(.sidebar)
@@ -80,7 +91,7 @@ struct ContentView: View {
                 Image(systemName: "checkmark.circle")
                     .foregroundStyle(.secondary)
             }
-            Text("\(model.filteredSessions.count) sessions")
+            Text("\(model.filteredSessionGroups.count) projects · \(model.filteredSessions.count) threads")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
