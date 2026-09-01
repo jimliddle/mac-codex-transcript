@@ -1,0 +1,6 @@
+{"timestamp":"2026-08-18T15:00:00Z","type":"session_meta","payload":{"id":"019-test-session","timestamp":"2026-08-18T15:00:00Z","cwd":"/Users/example/Project","originator":"codex_cli_rs","cli_version":"0.150.0","source":"cli","model_provider":"openai"}}
+{"timestamp":"2026-08-18T15:00:01Z","type":"event_msg","payload":{"type":"user_message","message":"Find the failing test."}}
+{"timestamp":"2026-08-18T15:00:01Z","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"Find the failing test."}]}}
+{"timestamp":"2026-08-18T15:00:02Z","type":"response_item","payload":{"type":"message","role":"assistant","content":[{"type":"output_text","text":"I’ll run the focused test suite."}]}}
+{"timestamp":"2026-08-18T15:00:03Z","type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"swift test\"}","call_id":"call_1"}}
+{"timestamp":"2026-08-18T15:00:04Z","type":"response_item","payload":{"type":"function_call_output","call_id":"call_1","output":"Test Suite 'All tests' passed."}}
