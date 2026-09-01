@@ -12,20 +12,9 @@ struct ContentView: View {
                 sidebarHeader
                 Divider()
                 List(selection: $model.selected) {
-                    ForEach(model.filteredSessionGroups) { project in
-                        Section {
-                            ForEach(project.sessions) { session in
-                                SessionRow(session: session)
-                                    .tag(session)
-                            }
-                        } header: {
-                            HStack {
-                                Label(project.name, systemImage: "folder.fill")
-                                Spacer()
-                                Text("\(project.sessions.count)")
-                                    .foregroundStyle(.tertiary)
-                            }
-                        }
+                    ForEach(model.filteredSessions) { session in
+                        SessionRow(session: session)
+                            .tag(session)
                     }
                 }
                 .listStyle(.sidebar)
@@ -91,7 +80,7 @@ struct ContentView: View {
                 Image(systemName: "checkmark.circle")
                     .foregroundStyle(.secondary)
             }
-            Text("\(model.filteredSessionGroups.count) projects · \(model.filteredSessions.count) threads")
+            Text("\(model.filteredSessions.count) sessions")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -288,9 +277,9 @@ private struct SessionRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
-                Text(session.title)
-                    .font(.body.weight(.medium))
-                    .lineLimit(2)
+                Text(session.projectName)
+                    .font(.body.weight(.semibold))
+                    .lineLimit(1)
                 Spacer(minLength: 2)
                 if session.isArchived {
                     Image(systemName: "archivebox.fill")
@@ -298,6 +287,12 @@ private struct SessionRow: View {
                         .foregroundStyle(.secondary)
                         .help("Archived")
                 }
+            }
+            if session.projectName != session.title {
+                Text(session.title)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
             }
             HStack(spacing: 6) {
                 if let date = session.timestamp {

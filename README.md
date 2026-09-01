@@ -2,11 +2,11 @@
 
 A private, local only macOS app for browsing Codex CLI session history and exporting readable Markdown transcripts.
 
-Codex Transcript turns the raw JSONL files under `~/.codex` into a browsable conversation view. It groups threads by project, distinguishes user and model messages visually, wraps long content, and keeps technical activity out of the way until it is needed.
+Codex Transcript turns the raw JSONL files under `~/.codex` into a browsable conversation view. It identifies every thread by its project, distinguishes user and model messages visually, wraps long content, and keeps technical activity out of the way until it is needed.
 
 ## Features
 
-- Groups conversation threads by project folder.
+- Shows the project folder prominently for every conversation thread, with the original request as secondary context.
 - Shows the original request, date, size, and session metadata for each thread.
 - Uses distinct, readable styling for user and Codex messages.
 - Formats Markdown and wraps long messages to the window width.
