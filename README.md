@@ -1,6 +1,6 @@
 # Codex Transcript for macOS
 
-A private, local-only macOS app for browsing Codex CLI session history and exporting readable Markdown transcripts.
+A private, local only macOS app for browsing Codex CLI session history and exporting readable Markdown transcripts.
 
 Codex Transcript turns the raw JSONL files under `~/.codex` into a browsable conversation view. It groups threads by project, distinguishes user and model messages visually, wraps long content, and keeps technical activity out of the way until it is needed.
 
