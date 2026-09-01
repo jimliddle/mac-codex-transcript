@@ -23,8 +23,17 @@ struct ContentView: View {
                                 Label(project.name, systemImage: "folder.fill")
                                 Spacer()
                                 Text("\(project.sessions.count)")
-                                    .foregroundStyle(.tertiary)
+                                    .font(.caption.monospacedDigit().weight(.semibold))
+                                    .padding(.horizontal, 7)
+                                    .padding(.vertical, 2)
+                                    .background(Color.accentColor.opacity(0.14), in: Capsule())
                             }
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(Color.accentColor)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentColor.opacity(0.11), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
                         }
                     }
                 }

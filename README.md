@@ -6,7 +6,7 @@ Codex Transcript turns the raw JSONL files under `~/.codex` into a browsable con
 
 ## Features
 
-- Groups conversation threads by project folder.
+- Groups conversation threads beneath distinctive blue project headers.
 - Shows the project name prominently on every thread, with the original request as secondary context.
 - Shows the original request, date, size, and session metadata for each thread.
 - Uses distinct, readable styling for user and Codex messages.
